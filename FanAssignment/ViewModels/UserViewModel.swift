@@ -16,6 +16,7 @@ class UserViewModel: ObservableObject {
     @Published var errorMessage: String?
 
     private var db = Firestore.firestore()
+    private let isVerified = firebaseUser.isEmailVerified
 
     // Fungsi untuk sign up
     func signUp(name: String, email: String, password: String) {
@@ -104,7 +105,17 @@ class UserViewModel: ObservableObject {
             if let error = error {
                 self.errorMessage = error.localizedDescription
             } else {
-                self.user?.verificationStatus = isVerified
+                self.fetchUserDetails()
+            }
+        }
+    }
+    
+    func refreshVerificationStatus() {
+        guard let user = self.user else { return }
+        if let firebaseUser = Auth.auth().currentUser, firebaseUser.uid == user.uid {
+            let isVerified = firebaseUser.isEmailVerified
+            if user.verificationStatus != isVerified {
+                self.updateVerificationStatus(uid: user.uid, isVerified: isVerified)
             }
         }
     }

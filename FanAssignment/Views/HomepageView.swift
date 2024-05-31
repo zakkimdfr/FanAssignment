@@ -6,40 +6,55 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct HomepageView: View {
     @EnvironmentObject var userViewModel: UserViewModel
 
     var body: some View {
         NavigationView {
-            VStack {
-                if let user = userViewModel.user {
-                    Text("Welcome, \(user.name)")
-                        .font(.largeTitle)
-                        .padding()
+            ScrollView {
+                VStack {
+                    if let user = userViewModel.user {
+                        Text("Welcome, \(user.name)")
+                            .font(.largeTitle)
+                            .padding()
 
-                    Text("Email: \(user.email)")
-                        .font(.title2)
-                        .padding()
+                        Text("Email: \(user.email)")
+                            .font(.title2)
+                            .padding()
 
-                    Text("Verification Status: \(user.verificationStatus ? "Verified" : "Not Verified")")
-                        .font(.title2)
-                        .padding()
-                } else {
-                    Text("No user data available.")
-                        .font(.title2)
-                        .padding()
+                        HStack {
+                            Text("Status:")
+                                .font(.title2)
+                            
+                            Text("\(user.verificationStatus ? "Verified" : "Not Verified")")
+                                .foregroundStyle(user.verificationStatus ? .green : .red)
+                                .font(.title2)
+                                .padding()
+                        }
+                    } else {
+                        Text("No user data available.")
+                            .font(.title2)
+                            .padding()
+                    }
+                    
+                    Button(action: {
+                        userViewModel.signOut()
+                    }) {
+                        Text("Sign Out")
+                    }
                 }
-                
-                Button(action: {
-                    userViewModel.signOut()
-                }) {
-                    Text("Sign Out")
-                }
+                .navigationBarTitle("Home", displayMode: .large)
             }
-            .navigationBarTitle("Home", displayMode: .large)
         }
         .navigationBarBackButtonHidden(true)
+        .onAppear {
+            userViewModel.fetchUserDetails()
+        }
+        .refreshable {
+            userViewModel.refreshVerificationStatus()
+        }
     }
 }
 
