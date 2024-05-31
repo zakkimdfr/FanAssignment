@@ -16,7 +16,7 @@ class UserViewModel: ObservableObject {
     @Published var errorMessage: String?
 
     private var db = Firestore.firestore()
-    private let isVerified = firebaseUser.isEmailVerified
+    
 
     // Fungsi untuk sign up
     func signUp(name: String, email: String, password: String) {
