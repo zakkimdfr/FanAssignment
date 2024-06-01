@@ -13,16 +13,14 @@ struct UserSearchView: View {
 
     var body: some View {
         VStack {
-            TextField("Search by name or email", text: $searchQuery)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
-
-            Button(action: {
-                viewModel.searchUsers(query: searchQuery)
-            }) {
-                Text("Search")
+            HStack {
+                Image(systemName: "magnifyingglass")
+                
+                TextField("Search by name or email", text: $searchQuery)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding()
+                .textInputAutocapitalization(.never)
             }
-            .padding()
 
             List(viewModel.searchedUsers) { user in
                 VStack(alignment: .leading) {

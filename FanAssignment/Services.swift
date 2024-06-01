@@ -26,6 +26,7 @@ protocol FirestoreService {
     func updateVerificationStatus(uid: String, isVerified: Bool, completion: @escaping (Error?) -> Void)
     func fetchUsersByVerificationStatus(isVerified: Bool, completion: @escaping (Result<[UserModel], Error>) -> Void)
     func searchUsers(query: String, completion: @escaping (Result<[UserModel], Error>) -> Void)
+    func fetchAllUsers(completion: @escaping (Result<[UserModel], Error>) -> Void)
 }
 
 

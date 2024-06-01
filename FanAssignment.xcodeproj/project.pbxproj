@@ -28,6 +28,8 @@
 		C3AF6A6D2C0AAE2900B603EE /* FirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AF6A6C2C0AAE2900B603EE /* FirestoreManager.swift */; };
 		C3AF6A6F2C0AAF4900B603EE /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AF6A6E2C0AAF4900B603EE /* Services.swift */; };
 		C3AF6A722C0AB43200B603EE /* UserSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AF6A712C0AB43200B603EE /* UserSearchView.swift */; };
+		C3AF6A812C0AC3FE00B603EE /* MockService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AF6A7C2C0AC20000B603EE /* MockService.swift */; };
+		C3AF6A822C0AC3FE00B603EE /* UserViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AF6A7E2C0AC23D00B603EE /* UserViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +72,8 @@
 		C3AF6A6C2C0AAE2900B603EE /* FirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreManager.swift; sourceTree = "<group>"; };
 		C3AF6A6E2C0AAF4900B603EE /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
 		C3AF6A712C0AB43200B603EE /* UserSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchView.swift; sourceTree = "<group>"; };
+		C3AF6A7C2C0AC20000B603EE /* MockService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockService.swift; sourceTree = "<group>"; };
+		C3AF6A7E2C0AC23D00B603EE /* UserViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,7 +106,6 @@
 		C3AF6A182C083DB400B603EE = {
 			isa = PBXGroup;
 			children = (
-				C3AF6A642C09718200B603EE /* GoogleService-Info.plist */,
 				C3AF6A232C083DB400B603EE /* FanAssignment */,
 				C3AF6A342C083DB600B603EE /* FanAssignmentTests */,
 				C3AF6A3E2C083DB600B603EE /* FanAssignmentUITests */,
@@ -123,9 +126,14 @@
 		C3AF6A232C083DB400B603EE /* FanAssignment */ = {
 			isa = PBXGroup;
 			children = (
-				C3AF6A4F2C08446F00B603EE /* Models */,
+				C3AF6A6E2C0AAF4900B603EE /* Services.swift */,
+				C3AF6A572C08469700B603EE /* UserViewModel.swift */,
+				C3AF6A6A2C0AADF700B603EE /* AuthManager.swift */,
+				C3AF6A6C2C0AAE2900B603EE /* FirestoreManager.swift */,
+				C3AF6A712C0AB43200B603EE /* UserSearchView.swift */,
 				C3AF6A502C08447600B603EE /* ViewModels */,
 				C3AF6A4E2C08446700B603EE /* Views */,
+				C3AF6A4F2C08446F00B603EE /* Models */,
 				C3AF6A242C083DB400B603EE /* FanAssignmentApp.swift */,
 				C3AF6A262C083DB400B603EE /* ContentView.swift */,
 				C3AF6A282C083DB500B603EE /* Assets.xcassets */,
@@ -145,6 +153,8 @@
 		C3AF6A342C083DB600B603EE /* FanAssignmentTests */ = {
 			isa = PBXGroup;
 			children = (
+				C3AF6A7C2C0AC20000B603EE /* MockService.swift */,
+				C3AF6A7E2C0AC23D00B603EE /* UserViewModelTests.swift */,
 				C3AF6A352C083DB600B603EE /* FanAssignmentTests.swift */,
 			);
 			path = FanAssignmentTests;
@@ -153,6 +163,7 @@
 		C3AF6A3E2C083DB600B603EE /* FanAssignmentUITests */ = {
 			isa = PBXGroup;
 			children = (
+				C3AF6A642C09718200B603EE /* GoogleService-Info.plist */,
 				C3AF6A3F2C083DB600B603EE /* FanAssignmentUITests.swift */,
 				C3AF6A412C083DB600B603EE /* FanAssignmentUITestsLaunchTests.swift */,
 			);
@@ -179,10 +190,7 @@
 		C3AF6A502C08447600B603EE /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				C3AF6A6E2C0AAF4900B603EE /* Services.swift */,
-				C3AF6A572C08469700B603EE /* UserViewModel.swift */,
-				C3AF6A6A2C0AADF700B603EE /* AuthManager.swift */,
-				C3AF6A6C2C0AAE2900B603EE /* FirestoreManager.swift */,
+				C3AF6A742C0AC01C00B603EE /* Services */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -190,7 +198,6 @@
 		C3AF6A702C0AB41D00B603EE /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				C3AF6A712C0AB43200B603EE /* UserSearchView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -205,6 +212,13 @@
 				C3AF6A682C09F19D00B603EE /* ForgotView.swift */,
 			);
 			path = Pages;
+			sourceTree = "<group>";
+		};
+		C3AF6A742C0AC01C00B603EE /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -366,6 +380,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3AF6A362C083DB600B603EE /* FanAssignmentTests.swift in Sources */,
+				C3AF6A822C0AC3FE00B603EE /* UserViewModelTests.swift in Sources */,
+				C3AF6A812C0AC3FE00B603EE /* MockService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -582,7 +598,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = JY4LC4DV9B;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.zakkimudhoffar.FanAssignmentTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -602,7 +618,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = JY4LC4DV9B;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.zakkimudhoffar.FanAssignmentTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -621,9 +637,11 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = JY4LC4DV9B;
 				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.zakkimudhoffar.FanAssignmentUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -639,9 +657,11 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = JY4LC4DV9B;
 				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.zakkimudhoffar.FanAssignmentUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

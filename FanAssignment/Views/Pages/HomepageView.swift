@@ -6,57 +6,87 @@
 //
 
 import SwiftUI
-import Firebase
 
 struct HomepageView: View {
     @EnvironmentObject var userViewModel: UserViewModel
+    @State private var searchQuery: String = ""
+    @State private var showOnlyVerified: Bool = false
     
     var body: some View {
         NavigationView {
-            ScrollView {
-                VStack {
-                    if let user = userViewModel.user {
-                        Text("Welcome, \(user.name)")
-                            .font(.largeTitle)
-                            .padding()
+            VStack {
+                // Current User Information
+                if let user = userViewModel.user {
+                    VStack(alignment: .leading) {
+                        Text("Current User")
+                            .font(.title)
+                            .padding(.bottom, 5)
                         
+                        Text("Name: \(user.name)")
                         Text("Email: \(user.email)")
-                            .font(.title2)
-                            .padding()
-                        
-                        HStack {
-                            Text("Status:")
-                                .font(.title2)
-                            
-                            Text(user.verificationStatus ? "Verified" : "Not Verified")
-                                .foregroundStyle(user.verificationStatus ? .green : .red)
-                                .font(.title2)
-                                .padding()
-                        }
-                    } else {
-                        Text("No user data available.")
-                            .font(.title2)
-                            .padding()
+                        Text("Status: \(user.verificationStatus ? "Verified" : "Not Verified")")
+                            .foregroundColor(user.verificationStatus ? .green : .red)
                     }
-                    
-                    Button(action: {
-                        userViewModel.signOut()
-                    }) {
-                        Text("Sign Out")
-                            .font(.title2)
+                    .padding()
+                    .background(RoundedRectangle(cornerRadius: 10).stroke(Color.gray, lineWidth: 1))
+                    .padding()
+                } else {
+                    Text("No user data available.")
+                        .font(.title2)
+                        .padding()
+                }
+                
+                HStack {
+                    HStack {
+                        Image(systemName: "magnifyingglass")
+                            .padding(.leading)
+                        
+                        TextField("Search by name or email", text: $searchQuery)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
                             .padding()
-                            .background(Color.red)
-                            .foregroundColor(.white)
-                            .cornerRadius(10)
+                            .textInputAutocapitalization(.never)
                     }
                 }
+                
+                Toggle(isOn: $showOnlyVerified) {
+                    Text("Show only verified users")
+                }
+                .padding()
+                .onChange(of: showOnlyVerified) { value in
+                    if value {
+                        userViewModel.fetchUsersByVerificationStatus(isVerified: value)
+                    } else {
+                        userViewModel.fetchAllUsers()
+                    }
+                }
+                
+                List(userViewModel.filteredUsers.filter { user in
+                    let searchMatch = searchQuery.isEmpty ||
+                    user.name.localizedCaseInsensitiveContains(searchQuery) ||
+                    user.email.localizedCaseInsensitiveContains(searchQuery)
+                    let verifiedMatch = !showOnlyVerified || user.verificationStatus
+                    return searchMatch && verifiedMatch
+                }) { user in
+                    VStack(alignment: .leading) {
+                        Text(user.name)
+                            .font(.headline)
+                        Text(user.email)
+                            .font(.subheadline)
+                            .foregroundColor(.gray)
+                        Text(user.verificationStatus ? "Verified" : "Not Verified")
+                            .foregroundColor(user.verificationStatus ? .green : .red)
+                    }
+                    .padding()
+                }
             }
-            .navigationBarBackButtonHidden(true)
+            .navigationTitle("Homepage")
             .onAppear {
                 userViewModel.fetchUserDetails()
+                userViewModel.fetchAllUsers()
             }
             .refreshable {
                 userViewModel.refreshVerificationStatus()
+                userViewModel.fetchAllUsers()
             }
         }
     }

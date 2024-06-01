@@ -93,4 +93,23 @@ class FirestoreManager: FirestoreService {
             }
         }
     }
+    
+    func fetchAllUsers(completion: @escaping (Result<[UserModel], Error>) -> Void) {
+            db.collection("users").getDocuments { snapshot, error in
+                if let error = error {
+                    completion(.failure(error))
+                    return
+                }
+
+                guard let documents = snapshot?.documents else {
+                    completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "No users found."])))
+                    return
+                }
+
+                let users = documents.compactMap { document -> UserModel? in
+                    try? document.data(as: UserModel.self)
+                }
+                completion(.success(users))
+            }
+        }
 }

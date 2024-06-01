@@ -126,7 +126,7 @@
 //            }
 //        }
 //    }
-//    
+//
 //    func fetchUsersByVerificationStatus(isVerified: Bool) {
 //            firestoreService.fetchUsersByVerificationStatus(isVerified: isVerified) { result in
 //                switch result {
@@ -151,17 +151,17 @@ class UserViewModel: ObservableObject {
     @Published var passwordResetSent: Bool = false
     @Published var filteredUsers: [UserModel] = []
     @Published var searchedUsers: [UserModel] = []  // Added property to store searched users
-
+    
     private let userService: UserService
     private let emailVerificationService: EmailVerificationService
     private let firestoreService: FirestoreService
-
+    
     init(userService: UserService, emailVerificationService: EmailVerificationService, firestoreService: FirestoreService) {
         self.userService = userService
         self.emailVerificationService = emailVerificationService
         self.firestoreService = firestoreService
     }
-
+    
     func signUp(name: String, email: String, password: String) {
         userService.signUp(email: email, password: password) { result in
             switch result {
@@ -176,7 +176,7 @@ class UserViewModel: ObservableObject {
             }
         }
     }
-
+    
     func signIn(email: String, password: String) {
         userService.signIn(email: email, password: password) { result in
             switch result {
@@ -190,7 +190,7 @@ class UserViewModel: ObservableObject {
             }
         }
     }
-
+    
     func signOut() {
         userService.signOut { error in
             if let error = error {
@@ -201,7 +201,7 @@ class UserViewModel: ObservableObject {
             }
         }
     }
-
+    
     func sendEmailVerification() {
         emailVerificationService.sendEmailVerification { error in
             if let error = error {
@@ -211,7 +211,7 @@ class UserViewModel: ObservableObject {
             }
         }
     }
-
+    
     func saveToFirebase() {
         guard let user = user else { return }
         firestoreService.saveUser(user: user) { error in
@@ -220,7 +220,7 @@ class UserViewModel: ObservableObject {
             }
         }
     }
-
+    
     func fetchUserDetails() {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         firestoreService.fetchUser(uid: uid) { result in
@@ -232,7 +232,7 @@ class UserViewModel: ObservableObject {
             }
         }
     }
-
+    
     func refreshVerificationStatus() {
         guard let user = self.user else { return }
         if let firebaseUser = Auth.auth().currentUser, firebaseUser.uid == user.uid {
@@ -248,7 +248,7 @@ class UserViewModel: ObservableObject {
             }
         }
     }
-
+    
     func resetPassword(email: String) {
         userService.resetPassword(email: email) { error in
             if let error = error {
@@ -271,13 +271,24 @@ class UserViewModel: ObservableObject {
             }
         }
     }
-
+    
     // Add the searchUsers function
     func searchUsers(query: String) {
         firestoreService.searchUsers(query: query) { result in
             switch result {
             case .success(let users):
                 self.searchedUsers = users
+            case .failure(let error):
+                self.errorMessage = error.localizedDescription
+            }
+        }
+    }
+    
+    func fetchAllUsers() {
+        firestoreService.fetchAllUsers { result in
+            switch result {
+            case .success(let users):
+                self.filteredUsers = users
             case .failure(let error):
                 self.errorMessage = error.localizedDescription
             }
