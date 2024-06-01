@@ -2,9 +2,7 @@ Deskripsi
 Aplikasi ini memungkinkan pengguna untuk mendaftar, masuk, dan mencari pengguna lain. Menggunakan Firebase untuk Autentikasi dan Firestore untuk penyimpanan data.
 
 Langkah Instalasi:
-1. Clone repo:
-
-git clone https://github.com/username-anda/ZakkiMudhoffar_mdtest.git
+1. Clone repo: git clone https://github.com/username-anda/ZakkiMudhoffar_mdtest.git
 
 2. Buka file berekstensi .xcodeproj
 
