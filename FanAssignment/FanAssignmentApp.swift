@@ -10,11 +10,12 @@ import Firebase
 
 @main
 struct FanAssignmentApp: App {
-    @StateObject var userViewModel = UserViewModel()
-    
-    init() {
-        FirebaseApp.configure()
-    }
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    @StateObject var userViewModel = UserViewModel(
+        userService: AuthManager.shared,
+        emailVerificationService: AuthManager.shared,
+        firestoreService: FirestoreManager.shared
+    )
     
     var body: some Scene {
         WindowGroup {
@@ -30,3 +31,4 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         return true
     }
 }
+

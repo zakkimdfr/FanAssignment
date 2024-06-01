@@ -10,11 +10,15 @@ import SwiftUI
 struct ContentView: View {
     @EnvironmentObject var userViewModel: UserViewModel
     var body: some View {
-        LoginView()
+        LandingView()
     }
 }
 
 #Preview {
     ContentView()
-        .environmentObject(UserViewModel())
+        .environmentObject(UserViewModel(
+                    userService: AuthManager.shared,
+                    emailVerificationService: AuthManager.shared,
+                    firestoreService: FirestoreManager.shared
+                ))
 }

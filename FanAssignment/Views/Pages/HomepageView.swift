@@ -10,7 +10,7 @@ import Firebase
 
 struct HomepageView: View {
     @EnvironmentObject var userViewModel: UserViewModel
-
+    
     var body: some View {
         NavigationView {
             ScrollView {
@@ -19,16 +19,16 @@ struct HomepageView: View {
                         Text("Welcome, \(user.name)")
                             .font(.largeTitle)
                             .padding()
-
+                        
                         Text("Email: \(user.email)")
                             .font(.title2)
                             .padding()
-
+                        
                         HStack {
                             Text("Status:")
                                 .font(.title2)
                             
-                            Text("\(user.verificationStatus ? "Verified" : "Not Verified")")
+                            Text(user.verificationStatus ? "Verified" : "Not Verified")
                                 .foregroundStyle(user.verificationStatus ? .green : .red)
                                 .font(.title2)
                                 .padding()
@@ -43,22 +43,30 @@ struct HomepageView: View {
                         userViewModel.signOut()
                     }) {
                         Text("Sign Out")
+                            .font(.title2)
+                            .padding()
+                            .background(Color.red)
+                            .foregroundColor(.white)
+                            .cornerRadius(10)
                     }
                 }
-                .navigationBarTitle("Home", displayMode: .large)
             }
-        }
-        .navigationBarBackButtonHidden(true)
-        .onAppear {
-            userViewModel.fetchUserDetails()
-        }
-        .refreshable {
-            userViewModel.refreshVerificationStatus()
+            .navigationBarBackButtonHidden(true)
+            .onAppear {
+                userViewModel.fetchUserDetails()
+            }
+            .refreshable {
+                userViewModel.refreshVerificationStatus()
+            }
         }
     }
 }
 
 #Preview {
     HomepageView()
-        .environmentObject(UserViewModel())
+        .environmentObject(UserViewModel(
+            userService: AuthManager.shared,
+            emailVerificationService: AuthManager.shared,
+            firestoreService: FirestoreManager.shared
+        ))
 }

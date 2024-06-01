@@ -22,6 +22,12 @@
 		C3AF6A612C0858F800B603EE /* HomepageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AF6A602C0858F800B603EE /* HomepageView.swift */; };
 		C3AF6A632C08673D00B603EE /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AF6A622C08673D00B603EE /* RegisterView.swift */; };
 		C3AF6A652C09718200B603EE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C3AF6A642C09718200B603EE /* GoogleService-Info.plist */; };
+		C3AF6A672C09D94100B603EE /* LandingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AF6A662C09D94100B603EE /* LandingView.swift */; };
+		C3AF6A692C09F19D00B603EE /* ForgotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AF6A682C09F19D00B603EE /* ForgotView.swift */; };
+		C3AF6A6B2C0AADF700B603EE /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AF6A6A2C0AADF700B603EE /* AuthManager.swift */; };
+		C3AF6A6D2C0AAE2900B603EE /* FirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AF6A6C2C0AAE2900B603EE /* FirestoreManager.swift */; };
+		C3AF6A6F2C0AAF4900B603EE /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AF6A6E2C0AAF4900B603EE /* Services.swift */; };
+		C3AF6A722C0AB43200B603EE /* UserSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AF6A712C0AB43200B603EE /* UserSearchView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +64,12 @@
 		C3AF6A602C0858F800B603EE /* HomepageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomepageView.swift; sourceTree = "<group>"; };
 		C3AF6A622C08673D00B603EE /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		C3AF6A642C09718200B603EE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C3AF6A662C09D94100B603EE /* LandingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingView.swift; sourceTree = "<group>"; };
+		C3AF6A682C09F19D00B603EE /* ForgotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotView.swift; sourceTree = "<group>"; };
+		C3AF6A6A2C0AADF700B603EE /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		C3AF6A6C2C0AAE2900B603EE /* FirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreManager.swift; sourceTree = "<group>"; };
+		C3AF6A6E2C0AAF4900B603EE /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
+		C3AF6A712C0AB43200B603EE /* UserSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,9 +162,8 @@
 		C3AF6A4E2C08446700B603EE /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				C3AF6A512C08449E00B603EE /* LoginView.swift */,
-				C3AF6A602C0858F800B603EE /* HomepageView.swift */,
-				C3AF6A622C08673D00B603EE /* RegisterView.swift */,
+				C3AF6A732C0AB5B900B603EE /* Pages */,
+				C3AF6A702C0AB41D00B603EE /* Components */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -168,9 +179,32 @@
 		C3AF6A502C08447600B603EE /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				C3AF6A6E2C0AAF4900B603EE /* Services.swift */,
 				C3AF6A572C08469700B603EE /* UserViewModel.swift */,
+				C3AF6A6A2C0AADF700B603EE /* AuthManager.swift */,
+				C3AF6A6C2C0AAE2900B603EE /* FirestoreManager.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		C3AF6A702C0AB41D00B603EE /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				C3AF6A712C0AB43200B603EE /* UserSearchView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		C3AF6A732C0AB5B900B603EE /* Pages */ = {
+			isa = PBXGroup;
+			children = (
+				C3AF6A512C08449E00B603EE /* LoginView.swift */,
+				C3AF6A602C0858F800B603EE /* HomepageView.swift */,
+				C3AF6A622C08673D00B603EE /* RegisterView.swift */,
+				C3AF6A662C09D94100B603EE /* LandingView.swift */,
+				C3AF6A682C09F19D00B603EE /* ForgotView.swift */,
+			);
+			path = Pages;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -312,12 +346,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3AF6A612C0858F800B603EE /* HomepageView.swift in Sources */,
+				C3AF6A6F2C0AAF4900B603EE /* Services.swift in Sources */,
 				C3AF6A522C08449E00B603EE /* LoginView.swift in Sources */,
+				C3AF6A692C09F19D00B603EE /* ForgotView.swift in Sources */,
 				C3AF6A272C083DB400B603EE /* ContentView.swift in Sources */,
 				C3AF6A632C08673D00B603EE /* RegisterView.swift in Sources */,
+				C3AF6A672C09D94100B603EE /* LandingView.swift in Sources */,
 				C3AF6A562C0844BF00B603EE /* UserModel.swift in Sources */,
 				C3AF6A582C08469700B603EE /* UserViewModel.swift in Sources */,
 				C3AF6A252C083DB400B603EE /* FanAssignmentApp.swift in Sources */,
+				C3AF6A6B2C0AADF700B603EE /* AuthManager.swift in Sources */,
+				C3AF6A6D2C0AAE2900B603EE /* FirestoreManager.swift in Sources */,
+				C3AF6A722C0AB43200B603EE /* UserSearchView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
