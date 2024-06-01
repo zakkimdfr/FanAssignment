@@ -29,6 +29,10 @@ protocol FirestoreService {
     func fetchAllUsers(completion: @escaping (Result<[UserModel], Error>) -> Void)
 }
 
+protocol AuthForm {
+    var formIsValid: Bool { get }
+}
+
 
 
 

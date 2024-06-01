@@ -11,75 +11,106 @@ struct HomepageView: View {
     @EnvironmentObject var userViewModel: UserViewModel
     @State private var searchQuery: String = ""
     @State private var showOnlyVerified: Bool = false
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         NavigationView {
             VStack {
                 // Current User Information
-                if let user = userViewModel.user {
-                    VStack(alignment: .leading) {
-                        Text("Current User")
-                            .font(.title)
-                            .padding(.bottom, 5)
+                if userViewModel.user != nil {
+                    
+                    CurrentUserView()
+                        .padding(.horizontal)
+                    
+                    HStack {
+                        HStack {
+                            Image(systemName: "magnifyingglass")
+                                .padding(.leading, 30)
+                            
+                            TextField("Search by name or email", text: $searchQuery)
+                                .padding()
+                                .textInputAutocapitalization(.never)
+                        }
+                        .background(
+                            RoundedRectangle(cornerRadius: 10)
+                                .foregroundColor(Color(.systemBrown))
+                                .opacity(0.4)
+                        )
                         
-                        Text("Name: \(user.name)")
-                        Text("Email: \(user.email)")
-                        Text("Status: \(user.verificationStatus ? "Verified" : "Not Verified")")
-                            .foregroundColor(user.verificationStatus ? .green : .red)
+                        Button(action: {
+                            showOnlyVerified.toggle()
+                            if showOnlyVerified {
+                                userViewModel.fetchUsersByVerificationStatus(isVerified: showOnlyVerified)
+                            } else {
+                                userViewModel.fetchAllUsers()
+                            }
+                        }) {
+                            Image(systemName: (showOnlyVerified ? "line.3.horizontal.decrease.circle.fill" : "line.3.horizontal.decrease.circle"))
+                                .resizable()
+                                .frame(width: 24, height: 24)
+                                .foregroundColor(showOnlyVerified ? Color(.systemBrown) : Color(.black))
+                        }
                     }
-                    .padding()
-                    .background(RoundedRectangle(cornerRadius: 10).stroke(Color.gray, lineWidth: 1))
-                    .padding()
+                    .padding(.horizontal)
+                
+                    List(userViewModel.filteredUsers.filter { user in
+                        let searchMatch = searchQuery.isEmpty ||
+                        user.name.localizedCaseInsensitiveContains(searchQuery) ||
+                        user.email.localizedCaseInsensitiveContains(searchQuery)
+                        let verifiedMatch = !showOnlyVerified || user.verificationStatus
+                        return searchMatch && verifiedMatch
+                    }) { user in
+                        HStack {
+                            VStack(alignment: .leading) {
+                                Text(user.name)
+                                    .font(.headline)
+                                    .foregroundColor(Color(.systemBrown))
+                                Text(user.email)
+                                    .font(.subheadline)
+                                    .foregroundColor(.gray)
+                            }
+                            .padding()
+                            Spacer()
+                            Image(systemName: (user.verificationStatus ? "checkmark.seal.fill" : "xmark.seal.fill"))
+                                .foregroundColor(user.verificationStatus ? Color(.systemGreen) : Color(.systemRed))
+
+                        }
+                    }
+                    
                 } else {
                     Text("No user data available.")
+                        .foregroundStyle(.brown)
                         .font(.title2)
                         .padding()
                 }
                 
-                HStack {
-                    HStack {
-                        Image(systemName: "magnifyingglass")
-                            .padding(.leading)
-                        
-                        TextField("Search by name or email", text: $searchQuery)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
-                            .padding()
-                            .textInputAutocapitalization(.never)
-                    }
-                }
                 
-                Toggle(isOn: $showOnlyVerified) {
-                    Text("Show only verified users")
-                }
-                .padding()
-                .onChange(of: showOnlyVerified) { value in
-                    if value {
-                        userViewModel.fetchUsersByVerificationStatus(isVerified: value)
-                    } else {
-                        userViewModel.fetchAllUsers()
+            }
+            .navigationBarBackButtonHidden()
+            .toolbar {
+                if userViewModel.user != nil {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Text("Home")
+                            .foregroundColor(Color(.systemBrown))
+                            .font(.system(size: 18, weight: .semibold))
+
                     }
-                }
-                
-                List(userViewModel.filteredUsers.filter { user in
-                    let searchMatch = searchQuery.isEmpty ||
-                    user.name.localizedCaseInsensitiveContains(searchQuery) ||
-                    user.email.localizedCaseInsensitiveContains(searchQuery)
-                    let verifiedMatch = !showOnlyVerified || user.verificationStatus
-                    return searchMatch && verifiedMatch
-                }) { user in
-                    VStack(alignment: .leading) {
-                        Text(user.name)
-                            .font(.headline)
-                        Text(user.email)
-                            .font(.subheadline)
-                            .foregroundColor(.gray)
-                        Text(user.verificationStatus ? "Verified" : "Not Verified")
-                            .foregroundColor(user.verificationStatus ? .green : .red)
+                    
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button(action:{
+                            userViewModel.signOut()
+                            self.presentationMode.wrappedValue.dismiss()
+                        }) {
+                            HStack {
+                                Text("Sign Out")
+                                Image(systemName: "rectangle.portrait.and.arrow.right")
+                            }
+                            .foregroundColor(Color(.systemBrown))
+                            .font(.system(size: 15, weight: .semibold))
+                        }
                     }
-                    .padding()
                 }
             }
-            .navigationTitle("Homepage")
             .onAppear {
                 userViewModel.fetchUserDetails()
                 userViewModel.fetchAllUsers()
@@ -100,3 +131,5 @@ struct HomepageView: View {
             firestoreService: FirestoreManager.shared
         ))
 }
+
+

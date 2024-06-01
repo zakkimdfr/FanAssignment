@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C305C1EF2C0B5DEF00830ADE /* CustomBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C305C1EE2C0B5DEF00830ADE /* CustomBackButton.swift */; };
+		C305C1F12C0B70D400830ADE /* CurrentUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C305C1F02C0B70D400830ADE /* CurrentUserView.swift */; };
 		C3AF6A252C083DB400B603EE /* FanAssignmentApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AF6A242C083DB400B603EE /* FanAssignmentApp.swift */; };
 		C3AF6A272C083DB400B603EE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AF6A262C083DB400B603EE /* ContentView.swift */; };
 		C3AF6A292C083DB500B603EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3AF6A282C083DB500B603EE /* Assets.xcassets */; };
@@ -22,14 +24,13 @@
 		C3AF6A612C0858F800B603EE /* HomepageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AF6A602C0858F800B603EE /* HomepageView.swift */; };
 		C3AF6A632C08673D00B603EE /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AF6A622C08673D00B603EE /* RegisterView.swift */; };
 		C3AF6A652C09718200B603EE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C3AF6A642C09718200B603EE /* GoogleService-Info.plist */; };
-		C3AF6A672C09D94100B603EE /* LandingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AF6A662C09D94100B603EE /* LandingView.swift */; };
 		C3AF6A692C09F19D00B603EE /* ForgotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AF6A682C09F19D00B603EE /* ForgotView.swift */; };
 		C3AF6A6B2C0AADF700B603EE /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AF6A6A2C0AADF700B603EE /* AuthManager.swift */; };
 		C3AF6A6D2C0AAE2900B603EE /* FirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AF6A6C2C0AAE2900B603EE /* FirestoreManager.swift */; };
 		C3AF6A6F2C0AAF4900B603EE /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AF6A6E2C0AAF4900B603EE /* Services.swift */; };
 		C3AF6A722C0AB43200B603EE /* UserSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AF6A712C0AB43200B603EE /* UserSearchView.swift */; };
 		C3AF6A812C0AC3FE00B603EE /* MockService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AF6A7C2C0AC20000B603EE /* MockService.swift */; };
-		C3AF6A822C0AC3FE00B603EE /* UserViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AF6A7E2C0AC23D00B603EE /* UserViewModelTests.swift */; };
+		C3AF6A862C0B15F400B603EE /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AF6A852C0B15F400B603EE /* InputView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C305C1EE2C0B5DEF00830ADE /* CustomBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBackButton.swift; sourceTree = "<group>"; };
+		C305C1F02C0B70D400830ADE /* CurrentUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserView.swift; sourceTree = "<group>"; };
 		C3AF6A212C083DB400B603EE /* FanAssignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FanAssignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3AF6A242C083DB400B603EE /* FanAssignmentApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FanAssignmentApp.swift; sourceTree = "<group>"; };
 		C3AF6A262C083DB400B603EE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -66,14 +69,13 @@
 		C3AF6A602C0858F800B603EE /* HomepageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomepageView.swift; sourceTree = "<group>"; };
 		C3AF6A622C08673D00B603EE /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		C3AF6A642C09718200B603EE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		C3AF6A662C09D94100B603EE /* LandingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingView.swift; sourceTree = "<group>"; };
 		C3AF6A682C09F19D00B603EE /* ForgotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotView.swift; sourceTree = "<group>"; };
 		C3AF6A6A2C0AADF700B603EE /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		C3AF6A6C2C0AAE2900B603EE /* FirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreManager.swift; sourceTree = "<group>"; };
 		C3AF6A6E2C0AAF4900B603EE /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
 		C3AF6A712C0AB43200B603EE /* UserSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchView.swift; sourceTree = "<group>"; };
 		C3AF6A7C2C0AC20000B603EE /* MockService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockService.swift; sourceTree = "<group>"; };
-		C3AF6A7E2C0AC23D00B603EE /* UserViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModelTests.swift; sourceTree = "<group>"; };
+		C3AF6A852C0B15F400B603EE /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,7 +156,6 @@
 			isa = PBXGroup;
 			children = (
 				C3AF6A7C2C0AC20000B603EE /* MockService.swift */,
-				C3AF6A7E2C0AC23D00B603EE /* UserViewModelTests.swift */,
 				C3AF6A352C083DB600B603EE /* FanAssignmentTests.swift */,
 			);
 			path = FanAssignmentTests;
@@ -190,7 +191,6 @@
 		C3AF6A502C08447600B603EE /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				C3AF6A742C0AC01C00B603EE /* Services */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -198,6 +198,9 @@
 		C3AF6A702C0AB41D00B603EE /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				C305C1F02C0B70D400830ADE /* CurrentUserView.swift */,
+				C3AF6A852C0B15F400B603EE /* InputView.swift */,
+				C305C1EE2C0B5DEF00830ADE /* CustomBackButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -206,19 +209,11 @@
 			isa = PBXGroup;
 			children = (
 				C3AF6A512C08449E00B603EE /* LoginView.swift */,
-				C3AF6A602C0858F800B603EE /* HomepageView.swift */,
 				C3AF6A622C08673D00B603EE /* RegisterView.swift */,
-				C3AF6A662C09D94100B603EE /* LandingView.swift */,
+				C3AF6A602C0858F800B603EE /* HomepageView.swift */,
 				C3AF6A682C09F19D00B603EE /* ForgotView.swift */,
 			);
 			path = Pages;
-			sourceTree = "<group>";
-		};
-		C3AF6A742C0AC01C00B603EE /* Services */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -360,13 +355,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3AF6A612C0858F800B603EE /* HomepageView.swift in Sources */,
+				C3AF6A862C0B15F400B603EE /* InputView.swift in Sources */,
 				C3AF6A6F2C0AAF4900B603EE /* Services.swift in Sources */,
 				C3AF6A522C08449E00B603EE /* LoginView.swift in Sources */,
 				C3AF6A692C09F19D00B603EE /* ForgotView.swift in Sources */,
 				C3AF6A272C083DB400B603EE /* ContentView.swift in Sources */,
+				C305C1EF2C0B5DEF00830ADE /* CustomBackButton.swift in Sources */,
 				C3AF6A632C08673D00B603EE /* RegisterView.swift in Sources */,
-				C3AF6A672C09D94100B603EE /* LandingView.swift in Sources */,
 				C3AF6A562C0844BF00B603EE /* UserModel.swift in Sources */,
+				C305C1F12C0B70D400830ADE /* CurrentUserView.swift in Sources */,
 				C3AF6A582C08469700B603EE /* UserViewModel.swift in Sources */,
 				C3AF6A252C083DB400B603EE /* FanAssignmentApp.swift in Sources */,
 				C3AF6A6B2C0AADF700B603EE /* AuthManager.swift in Sources */,
@@ -380,7 +377,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3AF6A362C083DB600B603EE /* FanAssignmentTests.swift in Sources */,
-				C3AF6A822C0AC3FE00B603EE /* UserViewModelTests.swift in Sources */,
 				C3AF6A812C0AC3FE00B603EE /* MockService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -545,7 +541,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -575,7 +571,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -598,7 +594,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = JY4LC4DV9B;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.zakkimudhoffar.FanAssignmentTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -618,7 +614,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = JY4LC4DV9B;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.zakkimudhoffar.FanAssignmentTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -637,7 +633,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = JY4LC4DV9B;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.zakkimudhoffar.FanAssignmentUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -657,7 +653,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = JY4LC4DV9B;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.zakkimudhoffar.FanAssignmentUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

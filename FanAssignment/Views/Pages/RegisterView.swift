@@ -15,112 +15,80 @@ struct RegisterView: View {
     @State private var name: String = ""
     @State private var email: String = ""
     @State private var password: String = ""
+    @State private var confirmPassword: String = ""
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
-        NavigationView {
-            ZStack {
-                ExtractedView()
-                VStack {
-                    Image(systemName: "swift")
-                        .resizable()
-                        .frame(width: 120, height: 100)
-                        .foregroundColor(.orange)
-                        .padding(.bottom)
-                    
-                    Text("Register")
-                        .font(.largeTitle)
-                        .bold()
-                        .foregroundStyle(.white)
-                        .padding(.bottom)
-                    
-                    HStack {
-                        Text("Name")
-                            .padding(.horizontal)
-                            .foregroundColor(.white)
-                        Spacer()
-                        TextField("Your Name", text: $name)
-                            .foregroundColor(.white)
-                            .padding(.leading)
-                            .frame(width: 235, height: 40)
-                            .overlay(alignment: .center) {
-                                RoundedRectangle(cornerRadius: 10)
-                                    .stroke(.white, lineWidth: 1)
-                                    .frame(width: 235, height: 40)
-                            }
-                    }
-                    .frame(width: 350, height: 50)
-                    
-                    HStack {
-                        Text("Email")
-                            .padding(.horizontal)
-                            .foregroundColor(.white)
-                        Spacer()
-                        TextField("Your Email", text: $email)
-                            .foregroundColor(.white)
-                            .keyboardType(.emailAddress)
-                            .textInputAutocapitalization(.never)
-                            .padding(.leading)
-                            .frame(width: 235, height: 40)
-                            .overlay(alignment: .center) {
-                                RoundedRectangle(cornerRadius: 10)
-                                    .stroke(.white, lineWidth: 1)
-                                    .frame(width: 235, height: 40)
-                            }
-                    }
-                    .frame(width: 350, height: 50)
-                    
-                    HStack {
-                        Text("Password")
-                            .padding(.horizontal)
-                            .foregroundColor(.white)
-                        Spacer()
-                        SecureField("Your Password", text: $password)
-                            .foregroundColor(.white)
-                            .padding(.leading)
-                            .frame(width: 235, height: 40)
-                            .overlay(alignment: .center) {
-                                RoundedRectangle(cornerRadius: 10)
-                                    .stroke(.white, lineWidth: 1)
-                                    .frame(width: 235, height: 40)
-                            }
-                    }
-                    .frame(width: 350, height: 50)
-                    
+        ZStack {
+            BackgroundColor1()
+                .ignoresSafeArea()
+            
+            VStack {
+                Spacer()
+                InputView(text: $name,
+                          title: "Name",
+                          placeholder: "Enter your Name")
+                .textInputAutocapitalization(.never)
+                .autocorrectionDisabled()
+                
+                InputView(text: $email,
+                          title: "Email Address",
+                          placeholder: "mail@example.com")
+                
+                .textInputAutocapitalization(.never)
+                .keyboardType(.emailAddress)
+                
+                InputView(text: $password,
+                          title: "Password",
+                          placeholder: "Enter your password",
+                          isSecureField: true)
+                
+                InputView(text: $confirmPassword,
+                          title: "Confirm Password",
+                          placeholder: "Confirm your password",
+                          isSecureField: true)
+                
+                HStack {
                     Button(action: {
                         userViewModel.signUp(name: name, email: email, password: password)
+                        self.dismiss()
                     }, label: {
-                        Text("Create Account")
-                            .font(.title2)
-                            .foregroundColor(.white)
-                            .background(
-                                RoundedRectangle(cornerRadius: 20)
-                                    .foregroundColor(.white)
-                                    .frame(width: 250, height: 50)
-                                    .opacity(0.15)
-                                    .overlay(content: {
-                                        RoundedRectangle(cornerRadius: 20)
-                                            .stroke(.gray, lineWidth: 3)
-                                    })
-                            )
-                            .padding(.top)
+                        Text("SIGN UP")
+                        Image(systemName: "arrow.right")
+                        
                     })
-                    .padding()
-                    
-                    if let errorMessage = userViewModel.errorMessage {
-                        Text(errorMessage)
-                            .foregroundColor(.red)
-                            .padding()
-                    }
+                    .background(
+                        RoundedRectangle(cornerRadius: 10)
+                            .frame(width: UIScreen.main.bounds.width - 32, height: 50)
+                            .foregroundColor(Color(.systemBrown))
+                    )
                 }
+                .foregroundColor(.white)
+                .font(.system(size: 18, weight: .bold))
+                .padding(.vertical, 50)
+                .disabled(!formIsValid)
+                .opacity(formIsValid ? 1.0 : 0.5)
+                
+                
+
+                
+                HStack {
+                    Text("Already have an account? |")
+                    
+                    Button {
+                        dismiss()
+                    } label: {
+                        Text("Sign In")
+                            .fontWeight(.bold)
+                    }
+
+                        
+                }
+                .font(.callout)
+                .foregroundColor(.brown)
             }
-            .navigationBarItems(leading: Button(action: {
-                // Action for back button
-            }) {
-                Image(systemName: "chevron.backward")
-                    .resizable()
-                    .frame(width: 24, height: 24)
-                    .foregroundColor(.white)
-            })
+            .padding(.horizontal)
+            .padding(.top, 24)
         }
     }
 }
@@ -132,4 +100,15 @@ struct RegisterView: View {
             emailVerificationService: AuthManager.shared,
             firestoreService: FirestoreManager.shared
         ))
+}
+
+extension RegisterView: AuthForm {
+    var formIsValid: Bool {
+        return !email.isEmpty
+        && email.contains("@")
+        && !password.isEmpty
+        && password.count > 5
+        && !name.isEmpty
+        && password == confirmPassword
+    }
 }

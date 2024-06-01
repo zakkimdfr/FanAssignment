@@ -10,7 +10,11 @@ import SwiftUI
 struct ContentView: View {
     @EnvironmentObject var userViewModel: UserViewModel
     var body: some View {
-        LandingView()
+        if userViewModel.userSession != nil {
+            HomepageView()
+        } else {
+            LoginView()
+        }
     }
 }
 
